@@ -44,6 +44,8 @@ int main() {
             display_trip(trip);
         if(choice == 4)
             break;
+
+            cout << endl;
     }
 
     return 0;
@@ -75,6 +77,8 @@ int select_goat(list<Goat> trip) {
 }
 
 void display_trip(list<Goat> trip){
+    cout << endl;
+    
     if (trip.empty()) {
         cout << "No goats on this trip.\n";
         return;
@@ -86,7 +90,6 @@ void display_trip(list<Goat> trip){
         cout << goat.get_name() << " (" << goat.get_age() << ", " << goat.get_color() << ")";
         cout << endl;
     }
-
 }
 
 void add_goat(list<Goat> &trip, string names[], string colors[]) {
