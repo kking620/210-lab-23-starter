@@ -2,6 +2,8 @@
 #include <fstream>
 #include <iomanip>
 #include <list>
+#include <cstdlib>
+#include <ctime>
 #include "Goat.h"
 using namespace std;
 
@@ -64,8 +66,27 @@ int main_menu() {
         cout << "Invalid input";
 }
 
+int select_goat(list<Goat> trip) {
+    int c;
+    cout << "Enter the number of the goat you wish to choose: ";
+    cin >> c;
+
+    return c;
+}
+
 void display_trip(list<Goat> trip){
-    
+    if (trip.empty()) {
+        cout << "No goats on this trip.\n";
+        return;
+    }
+    cout << "Goats On Current Trip:\n";
+    int i = 1;
+    for (auto &goat : trip){
+        cout << "[" << i++ << "] ";
+        cout << goat.get_name() << " (" << goat.get_age() << ", " << goat.get_color() << ")";
+        cout << endl;
+    }
+
 }
 
 void add_goat(list<Goat> &trip, string names[], string colors[]) {
@@ -73,5 +94,22 @@ void add_goat(list<Goat> &trip, string names[], string colors[]) {
     string color = colors[rand() % SZ_COLORS];
     int age = rand() % MAX_AGE + 1;
     trip.push_back(Goat(name, age, color));
+}
+
+void delete_goat(list<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "No goats on this trip.\n";
+        return;
+    }
+
+    display_trip(trip);
+    int c = select_goat(trip);
+
+    if (c < 1 || c > trip.size()) {
+        cout << "Invalid goat selection.\n";
+        return;
+    }
+    else if (c >= 1 && c <= trip.size())
+        trip.erase(trip.begin() + (c - 1));
 }
 
