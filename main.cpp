@@ -109,7 +109,10 @@ void delete_goat(list<Goat> &trip) {
         cout << "Invalid goat selection.\n";
         return;
     }
-    else if (c >= 1 && c <= trip.size())
-        trip.erase(trip.begin() + (c - 1));
+    else if (c >= 1 && c <= trip.size()){
+        auto it = trip.begin();
+        advance(it, c-1);
+        trip.erase(it);
+    }
 }
 
