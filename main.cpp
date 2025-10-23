@@ -36,6 +36,9 @@ int main() {
     while(true){
         int choice = main_menu();
 
+        if (choice < 1 || choice > 4)
+        cout << "Invalid input";
+
         if(choice == 1)
             add_goat(trip, names, colors);
         if(choice == 2)
@@ -61,11 +64,8 @@ int main_menu() {
     cout << "[4] Quit\n";
     cout << "Choice -->";
     cin >> c;
-
-    if(c >= 1 && c <=4)
-        return c;
-    else
-        cout << "Invalid input";
+        
+    return c;
 }
 
 int select_goat(list<Goat> trip) {
