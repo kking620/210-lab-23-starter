@@ -11,6 +11,7 @@ private:
     int age;
     string color;
 public: 
+    //Declaring and initializing the default constructors, partial constructors, and parameter constructors for the Goat class using the respective arguments
     Goat()                          { name = ""; age = 0; color = ""; }
     Goat(string n)                          { name = n; age = 0; color = ""; }
     Goat(string n, int a)                          { name = n; age = a; color = ""; }
